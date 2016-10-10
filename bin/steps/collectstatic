@@ -31,8 +31,8 @@ if [ ! "$DISABLE_COLLECTSTATIC" ] && [ -f "$MANAGE_FILE" ] && [ "$DJANGO_INSTALL
     puts-cmd "python $MANAGE_FILE collectstatic --no-input --no-post-process"
     python $MANAGE_FILE collectstatic --no-input --no-post-process --traceback 2>&1 | sed '/^Post-processed/d;/^Copying/d;/^$/d' | indent
 
-    puts-cmd "python $MANAGE_FILE collectstatic --no-input"
-    python $MANAGE_FILE collectstatic -i components --no-input --traceback 2>&1 | sed '/^Post-processed/d;/^Copying/d;/^$/d' | indent
+    #puts-cmd "python $MANAGE_FILE collectstatic --no-input"
+    #python $MANAGE_FILE collectstatic -i components --no-input --traceback 2>&1 | sed '/^Post-processed/d;/^Copying/d;/^$/d' | indent
     
     COLLECTSTATIC_STATUS="${PIPESTATUS[0]}"
 
