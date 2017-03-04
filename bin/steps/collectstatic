@@ -22,7 +22,8 @@ MANAGE_FILE=${MANAGE_FILE:-fakepath}
 # Ensure that Django is explicitly specified in requirements.txt
 pip-grep -s requirements.txt django Django && DJANGO_INSTALLED=1
 
-python $MANAGE_FILE compilemessages
+puts-cmd "python $MANAGE_FILE compilemessages"
+python $MANAGE_FILE compilemessages >&1 | sed '/^Post-processed/d;/^Copying/d;/^$/d' | indent
 
 bpwatch start collectstatic  # metrics collection
 
